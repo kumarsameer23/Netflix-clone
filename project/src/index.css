@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-netflix-black text-netflix-light antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .container-fluid {
+    @apply px-4 md:px-6 lg:px-8 w-full max-w-screen-2xl mx-auto;
+  }
+  
+  .netflix-btn {
+    @apply bg-netflix-red text-white font-medium py-2 px-6 rounded hover:bg-opacity-90 transition-all duration-300 ease-in-out;
+  }
+  
+  .netflix-btn-secondary {
+    @apply bg-netflix-gray bg-opacity-70 text-white font-medium py-2 px-6 rounded hover:bg-opacity-90 transition-all duration-300 ease-in-out;
+  }
+  
+  .card-hover {
+    @apply transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10;
+  }
+
+  /* Page Transition Animations */
+  .page-enter {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  .page-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+
+  .page-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .page-exit-active {
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 400ms ease-in, transform 400ms ease-in;
+  }
+
+  /* Hero Section Animations */
+  .hero-text-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .hero-text-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 800ms ease-out, transform 800ms ease-out;
+  }
+
+  /* Custom Logo Animation */
+  .logo-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) rotate(45deg);
+    }
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
